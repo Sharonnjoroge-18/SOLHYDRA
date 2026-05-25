@@ -68,7 +68,10 @@ const Home = () => {
               designed for Africans
             </p>
             <div className="hero-btns">
-              <button className="btn-primary">Shop Now &rarr;</button>
+              {/* <button className="btn-primary">Shop Now &rarr;</button> */}
+              <Link className="btn-primary" to="/shop">
+                Shop Now &rarr;
+              </Link>
               <Link className="btn-secondary" to="/hydrationcalculator">
                 Find Your Hydration Match &rarr;
               </Link>

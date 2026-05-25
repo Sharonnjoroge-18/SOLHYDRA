@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import solhydra1 from '../images/SolHydra500ml.jpg'
 import './cart.css'
 
 function CartPage() {
@@ -33,7 +34,7 @@ function CartPage() {
           {items.map(item => (
             <div key={item.id} className="cart-item">
               <div className="item-image">
-                <img src="https://via.placeholder.com/80x100/e6f0ff/1e40af?text=💧" alt={item.name} />
+                <img src={solhydra1} alt={item.name} />
               </div>
               <div className="item-details">
                 <h3>{item.name}</h3>
