@@ -1,0 +1,137 @@
+.login-page {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to right, #0C1C48, #1B3F9F);
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+/* Form box */
+.form-container {
+  width: min(420px, 92vw);
+  min-height: 600px;
+  padding: 40px;
+  background-color: white;
+  border: 2px solid #e4ecf8;
+  border-radius: 10px;
+  font-family:   Arial, sans-serif; 
+  box-shadow: 0 18px 45px rgba(10, 79, 214, 0.12);
+  text-align: left;
+}
+
+/* Titles */
+.form-title {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 28px;
+  align-items: center;
+}
+
+.form-subtitle {
+  font-size: 17px;
+  color: #0f131a;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.input-field {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  color: #111111;
+  box-sizing: border-box;
+}
+
+.input-field::placeholder {
+  color: #1c2a49;
+}
+
+/* Password container */
+.password-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+ 
+}
+.password-toggle {
+ position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+  padding: 0; 
+}
+.password-toggle:focus {
+  outline: none;
+}
+
+/* Options row */
+.options-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  accent-color: BLUE;
+  margin-right: 6px;
+}
+
+/* Button */
+.log-in-button {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+
+
+/* Footer */
+.footer-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.signup-link,
+.forgot-link {
+  color: blue;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.options-row {
+  flex-wrap: wrap;
+  gap: 10px;
+}

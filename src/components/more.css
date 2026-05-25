@@ -1,0 +1,390 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.more-page {
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* ── Shared ── */
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #1233a6;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* ── Section 1: Everyday ── */
+.everyday-section {
+  padding: 80px clamp(20px, 4vw, 56px) 60px;
+  background: #f5f5fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.everyday-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  color: #000;
+  width: 100%;
+  max-width: 1180px;
+}
+
+.everyday-section .section-tag {
+  width: 100%;
+  max-width: 1180px;
+}
+
+.everyday-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.everyday-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3/4;
+}
+
+.everyday-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.everyday-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: 20px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-role {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── Section 2: Compare ── */
+.compare-section {
+  padding: 80px clamp(20px, 4vw, 56px);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compare-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: #000;
+  width: 100%;
+  max-width: 1180px;
+}
+
+.compare-section .section-tag {
+  width: 100%;
+  max-width: 1180px;
+}
+
+.compare-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 0 40px;
+  width: 100%;
+  max-width: 1180px;
+}
+
+.compare-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: 100%;
+  height: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.compare-card {
+  border-radius: 16px;
+  padding: 20px;
+  border: 1.5px solid;
+}
+
+.compare-card--bad {
+  border-color: #FF3366;
+  background: #fae4ea;
+}
+
+.compare-card--good {
+  border-color: #0de28d;
+  background: #e4faef;
+}
+
+.compare-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.compare-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.compare-icon.bad {
+  background: #eb93a9;
+  color: #c0392b;
+}
+
+.compare-icon.good {
+  background: #E0F5FF;
+  color: #2d855f;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.compare-table td {
+  padding: 10px 12px;
+  background: white;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+}
+
+.compare-table td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.compare-table td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.compare-table .value {
+  text-align: right;
+  font-weight: 700;
+}
+
+.compare-table .bad-value { color: #ff3366; }
+.compare-table .good-value { color: #00cc88; }
+
+/* ── Section 3: Why ── */
+.why-section {
+  padding: 80px clamp(20px, 4vw, 56px);
+  background: #f9f9fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(40px, 6vw, 90px);
+}
+
+.why-left {
+  flex: 1;
+  max-width: 560px;
+}
+
+.why-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 36px;
+  color: #000;
+}
+
+.why-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #fff;
+  border: 0.5px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.why-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.why-item-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.why-item-desc {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.why-right {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.why-product-blob {
+  width: 300px;
+  height: 350px;
+  background: linear-gradient(135deg, #030a2c 0%, #05197c 100%);
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blob-circle {
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb8b8;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ── Section 4: CTA ── */
+.cta-section {
+  background: #0a1560;
+  padding: 80px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta-bottles {
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.cta-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.cta-blue {
+  color: #4fc3f7;
+}
+
+.cta-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+}
+
+.cta-size {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .everyday-section,
+  .compare-section,
+  .why-section {
+    padding: 50px 24px;
+  }
+
+  .everyday-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compare-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .why-section {
+    flex-direction: column;
+  }
+
+  .why-left {
+    max-width: 100%;
+  }
+
+  .why-product-blob {
+    width: 200px;
+    height: 200px;
+  }
+
+  .why-bottle {
+    height: 160px;
+  }
+}
