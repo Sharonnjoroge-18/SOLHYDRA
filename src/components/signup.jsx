@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./signup.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
