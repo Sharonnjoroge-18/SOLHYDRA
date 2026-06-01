@@ -96,8 +96,17 @@ function CartPage() {
             <span className="total-price">Kes {total.toLocaleString()}</span>
           </div>
 
-          <button className="checkout-btn" onClick={() => navigate('/checkout')}>Proceed to Checkout →</button>
-          <Link to="/" className="continue-btn">Continue Shopping</Link>
+          <button
+            className="checkout-btn"
+            onClick={() => items.length > 0 && navigate('/checkout')}
+            disabled={items.length === 0}
+          >
+            Proceed to Checkout →
+          </button>
+          <Link to="/shop" className="continue-btn">Continue Shopping</Link>
+          {items.length === 0 && (
+            <div className="empty-note">Your cart is empty. Add items before proceeding to checkout.</div>
+          )}
 
           <div className="secure-note">🔒 Secure checkout with payment integration</div>
         </div>

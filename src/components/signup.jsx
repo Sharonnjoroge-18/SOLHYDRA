@@ -46,9 +46,15 @@ const SignUp = () => {
       try {
         setLoading(true);
         await register(name, email, password);
-        navigate("/shop");
+        navigate("/login");
       } catch (err) {
-        setError(err?.response?.data?.message || err?.message || "Registration failed. Please try again.");
+        console.error('Register error:', err?.response?.data || err);
+        setError(
+          err?.response?.data?.detail ||
+          err?.response?.data?.message ||
+          err?.message ||
+          "Registration failed. Please try again."
+        );
       } finally {
         setLoading(false);
       }

@@ -13,38 +13,47 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { login } = useAuth();
-    const from = location.state?.from?.pathname || "/shop";
+    const from = location.state?.from?.pathname || "/";
 
-    const handleSubmit =  (e) => {
-   e.preventDefault();
-    setError("");
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setError("");
 
-    if (!email || !password) {
+      const trimmedEmail = email.trim();
+      const trimmedPassword = password.trim();
+
+      if (!trimmedEmail || !trimmedPassword) {
         setError("Please fill in all fields.");
         return;
-    }
-    if (!/\S+@\S+\.\S+/.test(email)) {
+      }
+
+      if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
         setError("Please enter a valid email address.");
         return;
-    }
-    if (password.length < 6) {
+      }
+
+      if (trimmedPassword.length < 6) {
         setError("Password must be at least 6 characters long.");
         return;
-    }
+      }
 
-    const executeLogin = async () => {
       try {
         setLoading(true);
-        await login(email, password);
+        console.log("Logging in", { email: trimmedEmail, from });
+        await login(trimmedEmail, trimmedPassword);
+        console.log("Login successful, navigating to", from);
         navigate(from, { replace: true });
       } catch (err) {
-        setError(err?.response?.data?.message || err?.message || "Failed to log in. Please try again.");
+        console.error("Login error:", err?.response?.data || err);
+        setError(
+          err?.response?.data?.detail ||
+          err?.response?.data?.message ||
+          err?.message ||
+          "Failed to log in. Please try again."
+        );
       } finally {
         setLoading(false);
       }
-    };
-
-    executeLogin();
     };
 
     return (
@@ -53,7 +62,7 @@ const Login = () => {
                 <h2 className="form-title">Log In</h2>
                 <p className="form-subtitle">Welcome back.Please enter your credentials.</p>
 
-                {error && <p className="error">{error}</p>}
+                {error && <div className="error-message">{error}</div>}
 
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">

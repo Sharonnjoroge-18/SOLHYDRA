@@ -230,6 +230,19 @@
   background: #385cbe;
 }
 
+.cart-page .checkout-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #93a8dd;
+}
+
+.cart-page .empty-note {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  text-align: center;
+}
+
 .cart-page .continue-btn {
   display: block;
   text-align: center;

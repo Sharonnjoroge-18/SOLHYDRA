@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "/api";
+const DEV_BASE_URL = "/api";
+const PROD_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://hydra-backend-production-4f57.up.railway.app";
+const BASE_URL = import.meta.env.DEV ? DEV_BASE_URL : PROD_BASE_URL;
 
 const api = axios.create({ baseURL: BASE_URL });
 
@@ -15,7 +17,11 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401) {
+    const status = err.response?.status;
+    const url = err.config?.url || "";
+    const isAuthRequest = url.includes("/auth/login") || url.includes("/auth/register");
+
+    if (status === 401 && !isAuthRequest) {
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
       if (window.location.pathname !== "/login") {
@@ -31,15 +37,19 @@ export const authAPI = {
   register: (name, email, password) =>
     api.post("/auth/register", { name, email, password }).then((r) => r.data),
 
-  login: (email, password) => {
+  login: async (email, password) => {
     const form = new URLSearchParams();
     form.append("username", email);
+    form.append("email", email);
     form.append("password", password);
-    return api
-      .post("/auth/login", form, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      })
-      .then((r) => r.data);
+    const response = await api.post("/auth/login", form, {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    });
+    const data = response.data;
+    if (!data?.access_token) {
+      throw new Error(data?.detail || data?.message || 'Incorrect email or password.');
+    }
+    return data;
   },
 };
 

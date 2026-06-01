@@ -43,6 +43,7 @@ const CheckoutPage = () => {
           quantity: item.quantity,
         });
 
+        console.log('Order created:', order);
         const orderId = order?.id ?? order?._id ?? order?.order_id ?? order?.orderId;
         if (!orderId) {
           console.error('Create order response:', order);
@@ -52,21 +53,51 @@ const CheckoutPage = () => {
         createdOrderIds.push(orderId);
       }
 
+      const orderId = createdOrderIds[0];
+      console.log('Created orderId:', orderId);
+
       try {
-        const payment = await paymentsAPI.initiate(createdOrderIds[0]);
+        const payment = await paymentsAPI.initiate(orderId);
+        console.log('Payment initiation response:', payment);
         if (payment?.authorization_url) {
-          window.location.href = payment.authorization_url;
+          const authUrl = payment.authorization_url;
+          const finalUrl = /^https?:\/\//i.test(authUrl)
+            ? authUrl
+            : new URL(
+                authUrl,
+                import.meta.env.VITE_API_BASE_URL || 'https://hydra-backend-production-4f57.up.railway.app'
+              ).href;
+
+          console.log('Redirecting to payment URL:', finalUrl);
+          window.location.href = finalUrl;
           return;
         }
+        if (payment?.message) {
+          throw new Error(payment.message);
+        }
       } catch (paymentError) {
-        console.warn('Payment initiation failed, continuing to complete order.', paymentError);
+        console.error('Payment initiation failed:', paymentError?.response?.data || paymentError);
+        setError(
+          paymentError?.response?.data?.detail ||
+          paymentError?.response?.data?.message ||
+          paymentError?.message ||
+          'Payment redirection failed. Your order was created, but payment could not be completed automatically.'
+        );
+        localStorage.removeItem('cartItems');
+        return;
       }
 
       localStorage.removeItem('cartItems');
       alert('Order placed successfully. We could not complete payment redirection automatically.');
       navigate('/');
     } catch (err) {
-      setError(err.message || 'Failed to process checkout. Please try again.');
+      console.error('Checkout error:', err?.response?.data || err);
+      setError(
+        err?.response?.data?.detail ||
+        err?.response?.data?.message ||
+        err.message ||
+        'Failed to process checkout. Please try again.'
+      );
       console.error(err);
     } finally {
       setLoading(false);

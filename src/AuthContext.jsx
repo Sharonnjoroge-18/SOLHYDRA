@@ -26,13 +26,15 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const data = await authAPI.login(email, password);
+    if (!data?.access_token) {
+      throw new Error(data?.detail || data?.message || 'Invalid login response. Please check your credentials.');
+    }
     saveSession(data);
     return data;
   };
 
   const register = async (name, email, password) => {
     const data = await authAPI.register(name, email, password);
-    saveSession(data);
     return data;
   };
 
