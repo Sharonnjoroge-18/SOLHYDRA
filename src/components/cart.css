@@ -102,7 +102,7 @@
   background: none;
   font-size: 16px;
   width: 24px;
-  color: #1e40af;
+  color: #2563eb;
 }
 
 .cart-page .qty-control span {
@@ -147,7 +147,7 @@
 }
 
 .cart-page .discount {
-  color: #1e40af;
+  color: #2563eb;
   font-weight: 600;
 }
 
@@ -179,11 +179,11 @@
 }
 
 .cart-page .promo-input input:focus {
-  border-color: #1e40af;
+  border-color: #2563eb;
 }
 
 .cart-page .promo-input button {
-  background: #1e40af;
+  background: #2563eb;
   color: #fff;
   padding: 0 20px;
   border-radius: 6px;
@@ -193,7 +193,7 @@
 }
 
 .cart-page .promo-input button:hover {
-  background: #1e3a8a;
+  background: #385cbe;
 }
 
 /* ----- Total ----- */
@@ -209,14 +209,14 @@
 }
 
 .cart-page .total-price {
-  color: #1e40af;
+  color: #2563eb;
   font-size: 22px;
 }
 
 /* ----- Buttons ----- */
 .cart-page .checkout-btn {
   width: 100%;
-  background: #1e40af;
+  background: #2563eb;
   color: #fff;
   padding: 14px;
   border-radius: 8px;
@@ -227,7 +227,7 @@
 }
 
 .cart-page .checkout-btn:hover {
-  background: #1e3a8a;
+  background: #385cbe;
 }
 
 .cart-page .continue-btn {

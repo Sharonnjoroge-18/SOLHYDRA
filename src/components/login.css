@@ -93,18 +93,30 @@
 .options-row {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   font-size: 14px;
   margin-bottom: 15px;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 
-.checkbox-label input[type="checkbox"] {
-  accent-color: BLUE;
+.forgot-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
 }
-.checkbox-label {
-  display: flex;
-  align-items: center;
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.forgot-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
 }
 
 /* Button */

@@ -205,17 +205,21 @@
   margin-bottom: 25px;
 }
 
-.tab {
+.tabs button{
   padding: 12px 0;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 15px;
   color: #888;
+  position: relative;
   border-bottom: 2px solid transparent;
 }
+.tabs button:hover {
+  color: #0f172a;
+}
 
-.tab.active {
+.tabs button.active {
   color: #1e5fd9;
   border-bottom-color: #1e5fd9;
   font-weight: 600;
@@ -224,30 +228,196 @@
 .ingredients-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .ingredient-card {
-  background: #f5f7fa;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 35px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Horizontally center-aligns everything */
+  text-align: center;     /* Centers paragraph blocks text */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
 }
 
-.ingredient-icon {
-  font-size: 32px;
+.icon-circle-badge {
+  width: 64px;
+  height: 64px;
+  background-color: #eef6ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
+.ingredient-text-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
 .ingredient-card h3 {
-  margin: 5px 0;
+  color: #091d3e;
   font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .ingredient-card p {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.5;
+  color: #64748b;
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.benefits-tab-wrapper {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 45px 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); /* Soft ambient shadow overlay */
+  border: 1px solid #f1f5f9;
+}
+
+/* Bold serif main header text */
+.benefits-main-title {
+  color: black; /* True deep navy color profile */
+  font-size: 34px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+/* Subtle slate summary paragraph paragraph */
+.benefits-subtitle {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 35px;
+  max-width: 820px;
+}
+
+/* Dual Column Alignment Structure */
+.benefits-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Soft-Blue Tinted Presentation Cards */
+.benefit-layout-card {
+  background-color: #eef6ff; /* Soft pastel ice-blue background fill */
+  border-radius: 16px;
+  padding: 32px;
+  transition: transform 0.2s ease;
+}
+
+/* Inside Card Headers */
+.benefit-layout-card h3 {
+  color: black; /* True deep navy color profile */
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* Inside Card Descriptions */
+.benefit-layout-card p {
+  color: #475569; /* Muted gray text for readable text */
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nutrition-tab-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Bright Blue Educational Banner Card */
+.nutrition-dyk-banner {
+  background: #1e5fd9; /* Vibrant blue background fill */
+  border-radius: 20px;
+  padding: 35px 40px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 25px rgba(0, 114, 235, 0.15);
+}
+
+.nutrition-dyk-banner h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.nutrition-dyk-banner p {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 800px;
+  opacity: 0.95;
+  color: #ffffff;
+}
+
+/* The outer stark white main presentation card holding the grids */
+.nutrition-content-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 45px 50px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.02);
+  border: 1px solid #f1f5f9;
+}
+
+/* Bold serif main title section */
+.nutrition-main-title {
+  color: #091d3e; /* True deep navy color profile */
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* 2-Column Responsive Grid Integration */
+.nutrition-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Soft-Blue Tinted Presentation Box items */
+.nutrition-layout-card {
+  background-color: #eef6ff; /* Soft pastel ice-blue background fill matching image */
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Box headers */
+.nutrition-layout-card h3 {
+  color: #091d3e;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+/* Box context paragraphs */
+.nutrition-layout-card p {
+  color: #475569; /* Balanced slate gray for clear accessibility readability */
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin: 0;
 }
 
 .reviews-section h2 {
@@ -348,6 +518,72 @@
   color: #555;
   line-height: 1.6;
 }
+/* --- How to Use Tab Specific Styling (image_e0fd88.png Specifics) --- */
+
+.how-to-use-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* The vertical stacked flex list structure */
+.how-to-use-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Clean spacing between steps */
+}
+
+/* Individual list item cards */
+.how-to-use-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0; /* Soft border color outline */
+  border-radius: 16px; /* Smooth rounded corners matching the image */
+  padding: 24px 32px;
+  display: flex;
+  align-items: center; /* Vertically centers the badge alongside text */
+  gap: 24px; /* Space between the number badge and the headers */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01); /* Ultra-soft background shadow */
+}
+
+/* Solid Blue Circular Badge Element */
+.step-badge-circle {
+  background-color: #0066ff; /* Vibrant blue badge background fill */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Perfect circle trick */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevents the circle from squishing on small widths */
+}
+
+/* Typography wrapper alignment */
+.step-content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual Step Row Titles */
+.step-content-text h3 {
+  color: #0f172a; /* Off-black tone */
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Step Row Descriptions */
+.step-content-text p {
+  color: #64748b; /* Soft gray for readable body text */
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
 
 @media (max-width: 768px) {
   .product-container,
@@ -356,5 +592,34 @@
   }
   .ingredients-grid {
     grid-template-columns: 1fr;
+  }
+  /* Responsive breakpoint to automatically scale for smartphones */
+  .benefits-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .benefits-tab-wrapper {
+    padding: 25px 20px;
+  }
+  .benefits-main-title {
+    font-size: 26px;
+  }
+  .nutrition-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .nutrition-content-card {
+    padding: 30px 20px;
+  }
+  .nutrition-dyk-banner {
+    padding: 25px 20px;
+  }
+  .nutrition-main-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+    .how-to-use-card {
+    flex-direction: column;
+    align-items: flex-start; /* Aligns the badge to the top left on mobile screens */
+    gap: 16px;
+    padding: 20px;
   }
 }

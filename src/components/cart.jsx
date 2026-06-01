@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import solhydra1 from '../images/SolHydra500ml.jpg'
 import './cart.css'
 
+const defaultCartItems = [
+  { id: 1, name: 'SolHydra 500ml', size: 'Size: 500ml', price: 500, qty: 2 },
+  { id: 2, name: 'SolHydra 350ml', size: 'Size: 350ml', price: 350, qty: 1 },
+  { id: 3, name: 'SolHydra 12-Pack', size: 'Value Pack • 12x 500ml', price: 5400, qty: 1 },
+]
+
 function CartPage() {
-  const [items, setItems] = useState([
-    { id: 1, name: 'SolHydra 500ml', size: 'Size: 500ml', price: 500, qty: 2 },
-    { id: 2, name: 'SolHydra 350ml', size: 'Size: 350ml', price: 350, qty: 1 },
-    { id: 3, name: 'SolHydra 12-Pack', size: 'Value Pack • 12x 500ml', price: 5400, qty: 1 },
-  ])
+  const navigate = useNavigate()
+  const [items, setItems] = useState(() => {
+    const saved = localStorage.getItem('cartItems')
+    return saved ? JSON.parse(saved) : defaultCartItems
+  })
   const [promo, setPromo] = useState('')
 
   const updateQty = (id, delta) => {
@@ -20,6 +26,10 @@ function CartPage() {
   const removeItem = (id) => {
     setItems(items.filter(i => i.id !== id))
   }
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(items))
+  }, [items])
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
   const discount = 675
@@ -86,7 +96,7 @@ function CartPage() {
             <span className="total-price">Kes {total.toLocaleString()}</span>
           </div>
 
-          <button className="checkout-btn">Proceed to Checkout →</button>
+          <button className="checkout-btn" onClick={() => navigate('/checkout')}>Proceed to Checkout →</button>
           <Link to="/" className="continue-btn">Continue Shopping</Link>
 
           <div className="secure-note">🔒 Secure checkout with payment integration</div>

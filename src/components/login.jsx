@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./login.css";
@@ -7,12 +7,13 @@ import "./login.css";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const { login } = useAuth();
+    const from = location.state?.from?.pathname || "/shop";
 
     const handleSubmit =  (e) => {
    e.preventDefault();
@@ -35,7 +36,7 @@ const Login = () => {
       try {
         setLoading(true);
         await login(email, password);
-        navigate("/shop");
+        navigate(from, { replace: true });
       } catch (err) {
         setError(err?.response?.data?.message || err?.message || "Failed to log in. Please try again.");
       } finally {
@@ -90,18 +91,8 @@ const Login = () => {
                     </div>
 
                     <div className="options-row">
-                        <label className="checkbox-label">
-                        <input
-                            type="checkbox"
-                            id="rememberMe"
-                            checked={rememberMe}
-                            onChange={(e) => setRememberMe(e.target.checked)}
-                        />
-                        Remember Me 
-                        </label>
-
                         <Link to="/forgot-password" className="forgot-link">
-                            Forgot Password?
+                            <span className="forgot-text">Forgot Password?</span>
                         </Link>
                     </div>
 
