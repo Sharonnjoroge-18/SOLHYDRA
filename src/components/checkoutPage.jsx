@@ -17,7 +17,9 @@ const CheckoutPage = () => {
     ...item,
     quantity: item.qty ?? item.quantity ?? 1,
   }))
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const cartDiscount = JSON.parse(localStorage.getItem('cartDiscount') || '0')
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const total = subtotal - cartDiscount;
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -37,11 +39,15 @@ const CheckoutPage = () => {
       const createdOrderIds = [];
 
       for (const item of cartItems) {
-        const order = await ordersAPI.create({
+        const payload = {
           ...formData,
-          product_id: item.id,
-          quantity: item.quantity,
-        });
+          product_id: item.id ?? item.product_id,
+          product: item.id ?? item.product_id,
+          quantity: item.quantity ?? item.qty ?? 1,
+        };
+        console.log('Creating order payload:', payload, 'cart item:', item);
+
+        const order = await ordersAPI.create(payload);
 
         console.log('Order created:', order);
         const orderId = order?.id ?? order?._id ?? order?.order_id ?? order?.orderId;

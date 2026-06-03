@@ -57,7 +57,13 @@
 }
 
 .nav-links a:hover {
-  color: #000;
+  color: blue;
+}
+
+.nav-links a.active {
+  color: blue;
+  font-weight: 600;
+  border-bottom: 2px solid #1e5fd9;
 }
 
 /* Actions */

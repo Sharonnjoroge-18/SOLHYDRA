@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import solhydra1 from '../images/SolHydra500ml.jpg'
 import './cart.css'
 
-const defaultCartItems = [
-  { id: 1, name: 'SolHydra 500ml', size: 'Size: 500ml', price: 500, qty: 2 },
-  { id: 2, name: 'SolHydra 350ml', size: 'Size: 350ml', price: 350, qty: 1 },
-  { id: 3, name: 'SolHydra 12-Pack', size: 'Value Pack • 12x 500ml', price: 5400, qty: 1 },
-]
+const defaultCartItems = []
 
 function CartPage() {
   const navigate = useNavigate()
@@ -16,6 +12,8 @@ function CartPage() {
     return saved ? JSON.parse(saved) : defaultCartItems
   })
   const [promo, setPromo] = useState('')
+  const [discount, setDiscount] = useState(0)
+  const [promoMessage, setPromoMessage] = useState('')
 
   const updateQty = (id, delta) => {
     setItems(items.map(i =>
@@ -27,12 +25,39 @@ function CartPage() {
     setItems(items.filter(i => i.id !== id))
   }
 
+  const applyPromo = () => {
+    // Define valid promo codes and their discounts
+    const validCodes = {
+      'SAVE75': 75,
+      'WELCOME50': 50,
+      'SUMMER100': 100,
+    }
+
+    if (!promo.trim()) {
+      setPromoMessage('Please enter a promo code')
+      setDiscount(0)
+      return
+    }
+
+    const upperPromo = promo.toUpperCase()
+    if (validCodes[upperPromo]) {
+      setDiscount(validCodes[upperPromo])
+      setPromoMessage(`✓ Code applied! Discount: Kes ${validCodes[upperPromo]}`)
+    } else {
+      setDiscount(0)
+      setPromoMessage('✗ Invalid promo code')
+    }
+  }
+
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(items))
   }, [items])
 
+  useEffect(() => {
+    localStorage.setItem('cartDiscount', JSON.stringify(discount))
+  }, [discount])
+
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
-  const discount = 675
   const total = subtotal - discount
 
   return (
@@ -87,8 +112,9 @@ function CartPage() {
                 value={promo}
                 onChange={e => setPromo(e.target.value)}
               />
-              <button>Apply</button>
+              <button onClick={applyPromo}>Apply</button>
             </div>
+            {promoMessage && <p className="promo-message">{promoMessage}</p>}
           </div>
 
           <div className="summary-total">

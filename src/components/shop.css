@@ -420,24 +420,128 @@
   margin: 0;
 }
 
-.reviews-section h2 {
-  margin-bottom: 25px;
+.reviews-section {
+  position: relative; 
+  z-index: 20;
 }
-
 .reviews-summary {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 40px;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
   background: #f5f7fa;
-  padding: 30px;
   border-radius: 12px;
-  margin-bottom: 25px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.rating-overview {
+  text-align: center;
 }
 
 .rating-number {
-  font-size: 48px;
-  font-weight: bold;
-  color: #1e5fd9;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #1a2b4a;
+  line-height: 1;
+}
+
+/* ── Reviews Header ── */
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.add-review-btn {
+  background: #0057FF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-review-btn:hover { background: #0040cc; }
+
+/* ── Review Form ── */
+.review-form-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative; 
+  z-index: 20;
+}
+.review-form-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+.form-group input,
+.form-group textarea {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #0057FF;
+}
+
+/* ── Star Picker ── */
+.star-picker { display: flex; gap: 6px; }
+.star-pick {
+  font-size: 28px;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: color 0.15s;
+  line-height: 1;
+}
+.star-pick.active { color: #f59e0b; }
+
+/* ── Submit Button ── */
+.submit-review-btn {
+  background: #0057FF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+.submit-review-btn:hover { background: #0040cc; }
+
+/* ── Unverified badge ── */
+.unverified {
+  font-size: 12px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 3px 10px;
+  border-radius: 20px;
 }
 
 .stars-large {

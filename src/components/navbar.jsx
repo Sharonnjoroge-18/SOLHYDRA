@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import logo from '../images/logo.png';
 import { useAuth } from '../AuthContext';
@@ -40,19 +40,51 @@ const Navbar = () => {
         {/* Menu */}
         <div className={`nav-menu ${menuOpen ? "active" : ""}`}>
           <ul className="nav-links">
-            <li><a href="/#home" onClick={closeMenu}>Home</a></li>
-            <li><Link to="/shop#ingredients" onClick={closeMenu}>
-              Ingredients
-            </Link></li>
-            <li><Link to="/about" onClick={closeMenu}>
-              About
-            </Link></li>
-            <li><Link to="/shop" onClick={closeMenu}>
-              Shop
-            </Link></li>
-            <li><Link to="/cart" onClick={closeMenu}>
-              Cart
-            </Link></li>
+            <li>
+              <NavLink
+                to="/#home"
+                className={({ isActive }) => isActive ? 'nav-links-a active' : 'nav-links-a'}
+                onClick={closeMenu}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/shop#ingredients"
+                className={({ isActive }) => isActive ? 'nav-links-a active' : 'nav-links-a'}
+                onClick={closeMenu}
+              >
+                Ingredients
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => isActive ? 'nav-links-a active' : 'nav-links-a'}
+                onClick={closeMenu}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/shop"
+                className={({ isActive }) => isActive ? 'nav-links-a active' : 'nav-links-a'}
+                onClick={closeMenu}
+              >
+                Shop
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) => isActive ? 'nav-links-a active' : 'nav-links-a'}
+                onClick={closeMenu}
+              >
+                Cart
+              </NavLink>
+            </li>
           </ul>
 
           <div className="nav-actions">

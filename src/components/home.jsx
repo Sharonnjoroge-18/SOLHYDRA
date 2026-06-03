@@ -48,6 +48,15 @@ const Home = () => {
       { image: officeGuy, role: 'Office', name: 'At work' },
       { image: sportGirl, role: 'Sport', name: 'In training' },
     ];
+    const MARQUEE_ITEMS = [
+    "IONIZED HYDRATION",
+    "MADE FOR AFRICANS",
+    "DAILY HYDRATION",
+    "CLEAN LABEL",
+    "NO ARTIFICIAL ADDITIVES",
+    "LOW SUGAR",
+    "REAL ELECTROLYTES",
+  ];
   return (
     <div className="home-page">
         <section className="hero">
@@ -137,6 +146,17 @@ const Home = () => {
                 ))}
             </div>
             </section> 
+
+           <div className="marquee-wrapper">
+              <div className="marquee-track">
+                {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+                  <span key={i} className="marquee-item">
+                    {item}
+                    <span className="marquee-dot">✦</span>
+                  </span>
+                ))}
+              </div>
+           </div>
 
 
       {/* Everyday People ── */}
