@@ -118,6 +118,7 @@
   text-decoration: underline;
   padding: 0;
 }
+
 .cart-page .order-summary {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -271,7 +272,93 @@
   border-radius: 6px;
 }
 
-/* ----- Responsive ----- */
+/* ==========================================
+   DYNAMIC DARK MODE ADJUSTMENTS
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  .cart-page {
+    color: #f1f5f9 !important;
+  }
+
+  .cart-page .cart-title,
+  .cart-page .item-details h3,
+  .cart-page .item-price,
+  .cart-page .order-summary h2,
+  .cart-page .summary-total,
+  .cart-page .promo-section label {
+    color: #ffffff !important;
+  }
+
+  /* Soft light slate tints for descriptions/subtexts */
+  .cart-page .item-size,
+  .cart-page .qty-control span,
+  .cart-page .empty-note {
+    color: #cbd5e1 !important;
+  }
+
+  /* Highlight blue prices for clarity */
+  .cart-page .total-price,
+  .cart-page .qty-control button {
+    color: #38bdf8 !important; /* Luminous blue-sky tint */
+  }
+
+  /* Structure and component card backgrounds */
+  .cart-page .order-summary {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+  }
+
+  .cart-page .item-image {
+    background: #334155 !important;
+  }
+
+  /* Form entry modifications */
+  .cart-page .promo-input input {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+
+  .cart-page .promo-input input:focus {
+    border-color: #38bdf8 !important;
+  }
+
+  /* Row boundary dividers */
+  .cart-page .cart-item,
+  .cart-page .summary-total {
+    border-bottom-color: #334155 !important;
+    border-top-color: #334155 !important;
+  }
+
+  .cart-page .summary-row {
+    border-bottom-color: #1e293b !important;
+  }
+
+  /* Control boxes */
+  .cart-page .qty-control {
+    border-color: #475569 !important;
+    background: #1e293b !important;
+  }
+
+  .cart-page .continue-btn {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+
+  .cart-page .continue-btn:hover {
+    background: #334155 !important;
+  }
+
+  .cart-page .secure-note {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================== */
 @media (max-width: 768px) {
   .cart-page .cart-layout {
     grid-template-columns: 1fr;
