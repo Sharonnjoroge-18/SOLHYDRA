@@ -1,23 +1,22 @@
 import { useState } from "react";
+import axios from "axios";
 import "./hydrationcalculator.css";
 
 // ── Data ────────────────────────────────────────────────────────────────────
 const LOCATIONS = [
-  { value: "",         label: "Select your location in Africa" },
-  { value: "arid",     label: "🌵 East Africa – Arid/Semi-arid (Turkana, Marsabit)" },
-  { value: "hot",      label: "🌴 West Africa – Hot & Humid (Lagos, Accra)" },
-  { value: "highland", label: "⛰️  East Africa – Highland/Cool (Nairobi, Kampala)" },
-  { value: "tropical", label: "🌿 Central Africa – Rainforest (Kinshasa, Yaoundé)" },
-  { value: "savanna",  label: "🦁 Southern Africa – Savanna (Joburg, Lusaka)" },
-  { value: "coastal",  label: "🌊 Coastal Africa (Mombasa, Dar es Salaam)" },
-  { value: "sahel",    label: "☀️  Sahel – Dry & Hot (Dakar, Niamey)" },
-  { value: "maghreb",  label: "🏔️  North Africa – Mediterranean (Cairo, Casablanca)" },
+  { value: "",         label: "Select your location" },
+  { value: "Kenya",    label: "🇰🇪 Kenya" },
+  { value: "Nigeria",  label: "🇳🇬 Nigeria" },
+  { value: "Uganda",   label: "🇺🇬 Uganda" },
+  { value: "Ghana",    label: "🇬🇭 Ghana" },
+  { value: "South Africa", label: "🇿🇦 South Africa" },
+  { value: "Zimbabwe", label: "🇿🇼 Zimbabwe" }, 
 ];
 
 const ACTIVITIES = [
   { value: "",         label: "Select your activity level" },
   { value: "low",      label: "🪑 Low – Mostly sitting / desk work" },
-  { value: "moderate", label: "🚶 Moderate – Light walks, standing work" },
+  { value: "medium",   label: "🚶 Medium – Light walks, standing work" },
   { value: "high",     label: "🏃 High – Regular exercise / outdoor labor" },
 ];
 
@@ -27,8 +26,9 @@ const WEIGHT_OPTIONS = Array.from({ length: 57 }, (_, i) => {
 });
 WEIGHT_OPTIONS.unshift({ value: "", label: "Select your weight" });
 
-const CLIMATE_MULT  = { arid:1.35, hot:1.30, highland:1.00, tropical:1.25, savanna:1.20, coastal:1.20, sahel:1.30, maghreb:1.15 };
-const ACTIVITY_MULT = { low:1.00, moderate:1.20, high:1.40 };
+// Local calculations fallback map
+const CLIMATE_MULT  = { Kenya: 1.00, Nigeria: 1.30, Uganda: 1.00, Ghana: 1.30, "South Africa": 1.20, Zimbabwe: 1.15 };
+const ACTIVITY_MULT = { low: 1.00, medium: 1.20, high: 1.40 };
 
 // ── Component ────────────────────────────────────────────────────────────────
 export default function HydrationCalculator() {
@@ -38,16 +38,17 @@ export default function HydrationCalculator() {
   const [result,   setResult]   = useState(null);
   const [errors,   setErrors]   = useState({});
   const [shake,    setShake]    = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const validate = () => {
     const e = {};
-    if (!location) e.location = "Please select your location.";
+    if (!location) e.location = "Please select your country.";
     if (!activity) e.activity = "Please select your activity level.";
     if (!weight)   e.weight   = "Please select your weight.";
     return e;
   };
 
-  const calculate = () => {
+  const calculate = async () => {
     const e = validate();
     if (Object.keys(e).length) {
       setErrors(e);
@@ -56,12 +57,51 @@ export default function HydrationCalculator() {
       return;
     }
     setErrors({});
-    const liters  = Math.round(weight * 35 / 1000 * (CLIMATE_MULT[location] || 1) * (ACTIVITY_MULT[activity] || 1) * 10) / 10;
-    const bottles = Math.round(liters / 0.5 * 10) / 10;
-    setResult({ liters, bottles });
+    
+    // 1. Run local frontend calculation for instant display backup
+    const localLiters  = Math.round(weight * 35 / 1000 * (CLIMATE_MULT[location] || 1) * (ACTIVITY_MULT[activity] || 1) * 10) / 10;
+    const localBottles = Math.round(localLiters / 0.5 * 10) / 10;
+    setResult({ liters: localLiters, bottles: localBottles });
+
+    // 2. ── Connect to Backend Pipeline ──
+    setIsLoading(true);
+    try {
+      const payload = {
+        country: location,                 
+        activity_level: activity,          
+        weight_kg: Number(weight)          
+      };
+
+      const response = await axios.post("https://hydra-backend-production-4f57.up.railway.app/calculator/calculate", payload);
+      
+      if (response.status === 200 || response.status === 201) {
+        console.log("Hydration successfully recorded on backend server:", response.data);
+        
+        if (response.data && response.data.daily_water_ml) {
+          const serverLiters = response.data.daily_water_ml / 1000; // e.g. 2541ml -> 2.541L
+          const formattedLiters = Math.round(serverLiters * 10) / 10; // Round to 1 decimal place -> 2.5L
+          const serverBottles = Math.round(formattedLiters / 0.5 * 10) / 10;
+          
+          setResult({
+            liters: formattedLiters,
+            bottles: serverBottles
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Backend transmission sync failed:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const reset = () => { setLocation(""); setActivity(""); setWeight(""); setResult(null); setErrors({}); };
+  const reset = () => { 
+    setLocation(""); 
+    setActivity(""); 
+    setWeight(""); 
+    setResult(null); 
+    setErrors({}); 
+  };
 
   return (
     <div className="hc-page">
@@ -82,7 +122,7 @@ export default function HydrationCalculator() {
         <div className="hc-fields">
           {/* Location */}
           <div className="hc-field">
-            <label>📍 Location in Africa</label>
+            <label>📍 Country Location</label>
             <div className="hc-select-wrap">
               <select value={location} onChange={e => setLocation(e.target.value)}>
                 {LOCATIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
@@ -118,8 +158,8 @@ export default function HydrationCalculator() {
         </div>
 
         {/* Button */}
-        <button className="hc-btn" onClick={calculate}>
-          Calculate My Needs 💧
+        <button className="hc-btn" onClick={calculate} disabled={isLoading}>
+          {isLoading ? "Syncing data... ⏳" : "Calculate My Needs 💧"}
         </button>
 
         {/* Result */}
