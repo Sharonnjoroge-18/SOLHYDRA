@@ -143,3 +143,50 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+/* ==========================================
+   🌗 DYNAMIC DARK MODE ADJUSTMENTS
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  .form-container {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .form-title {
+    color: #ffffff !important;
+  }
+
+  .form-subtitle {
+    color: #cbd5e1 !important; /* Soft grey-white tint */
+  }
+
+  .input-label {
+    color: #f1f5f9 !important;
+  }
+
+  /* 3. Style inputs so text entries are clear against dark slots */
+  .input-field {
+    background-color: #0f172a !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+
+  .input-field::placeholder {
+    color: #64748b !important;
+  }
+
+  /* 4. Adjust icons/toggles and bottom context blocks */
+  .password-toggle {
+    color: #94a3b8 !important; /* Makes the eye icon visible against dark inputs */
+  }
+
+  .footer-text {
+    color: #cbd5e1 !important;
+  }
+
+  /* 5. Switch primary links to a luminous, readable sky-blue */
+  .signup-login-link {
+    color: #38bdf8 !important;
+  }
+}

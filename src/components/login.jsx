@@ -93,7 +93,7 @@ const Login = () => {
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? <FaEye /> : <FaEyeSlash />}
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
 

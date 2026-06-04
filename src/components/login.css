@@ -164,3 +164,57 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+/* ==========================================
+   🌗 DYNAMIC DARK MODE ADJUSTMENTS
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+  /* 1. Turn the light form box into a premium dark slate card */
+  .form-container {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* 2. Force text elements, titles, and labels to flip to clean white */
+  .form-title {
+    color: #ffffff !important;
+  }
+
+  .form-subtitle {
+    color: #cbd5e1 !important; /* Soft grey-white tint */
+  }
+
+  .input-label {
+    color: #f1f5f9 !important;
+  }
+
+  /* 3. Style inputs so text entries are clear against dark slots */
+  .input-field {
+    background-color: #0f172a !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+  }
+
+  .input-field::placeholder {
+    color: #64748b !important; /* Clean, visible placeholder grey */
+  }
+
+  /* 4. Adjust icons/toggles, checkboxes, and descriptive footer text */
+  .password-toggle {
+    color: #94a3b8 !important; /* Visible eye icon against dark background */
+  }
+
+  .options-row {
+    color: #cbd5e1 !important; /* Makes 'Remember Me' text readable */
+  }
+
+  .footer-text {
+    color: #cbd5e1 !important;
+  }
+
+  /* 5. Switch navigation links to a luminous, readable sky-blue */
+  .signup-link,
+  .forgot-link {
+    color: #38bdf8 !important;
+  }
+}
