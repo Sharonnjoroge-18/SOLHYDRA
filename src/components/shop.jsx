@@ -95,7 +95,7 @@ const ProductPage = () => {
           const cleanPack = selectedPack.toLowerCase().replace('-', '');
           const cleanDbName = dbName.replace('-', '');
 
-          return dbName.includes('solhydra') && 
+          return dbName.includes('hydra') && 
                  dbName.includes(selectedSize.toLowerCase()) && 
                  cleanDbName.includes(cleanPack);
         });
