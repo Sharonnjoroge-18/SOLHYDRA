@@ -63,7 +63,7 @@ export default function HeroSection() {
       {/* Edit form — bottom */}
       <div className="row-2">
         <div className="card">
-          <div className="card-title">EDIT HERO CONTENT</div>
+          <div className="card-title">Edit hero content</div>
           <div className="form-stack">
             <div className="form-group">
               <label className="form-label">Headline line 1 (white)</label>

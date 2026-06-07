@@ -7,7 +7,7 @@ const navGroups = [
     items: [
       { id: "overview", label: "Overview", icon: "ti-layout-dashboard" },
       { id: "products", label: "Products", icon: "ti-circle" },
-      { id: "hero", label: "Hero section", icon: "ti-radio-button" },
+      { id: "hero", label: "Hero section", icon: "ti-hammer" },
       { id: "ticker", label: "Ticker strip", icon: "ti-menu-2" },
     ],
   },
@@ -28,10 +28,10 @@ export default function AdminSidebar({ active, onNavigate }) {
 
   return (
     <aside className="admin-sidebar">
-      {/* Site Manager title */}
-      <div className="sidebar-site-manager">Site manager</div>
+      <div className="sidebar-site-manager">
+        <span className="sidebar-site-manager-text">Site manager</span>
+      </div>
 
-      {/* Nav groups */}
       <nav className="sidebar-nav">
         {navGroups.map((group) => (
           <div key={group.groupLabel} className="sidebar-group">
@@ -41,16 +41,16 @@ export default function AdminSidebar({ active, onNavigate }) {
                 key={item.id}
                 className={`nav-item ${active === item.id ? "active" : ""}`}
                 onClick={() => onNavigate(item.id)}
+                title={item.label}
               >
                 <i className={`ti ${item.icon}`} aria-hidden="true" />
-                {item.label}
+                <span className="nav-label">{item.label}</span>
               </button>
             ))}
           </div>
         ))}
       </nav>
 
-      {/* User profile at bottom */}
       <div className="sidebar-user">
         <div className="sidebar-user-avatar">{initials}</div>
         <div className="sidebar-user-info">

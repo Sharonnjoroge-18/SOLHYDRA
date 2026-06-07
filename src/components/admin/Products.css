@@ -4,6 +4,7 @@
   color: #e0e8ff;
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
+
 .prod-header {
   display: flex;
   align-items: center;
@@ -12,8 +13,10 @@
   border-bottom: 0.5px solid rgba(100,140,255,0.15);
   background: #0d1340;
 }
+
 .prod-heading { font-size: 20px; font-weight: 600; color: #e0e8ff; }
 .prod-header-actions { display: flex; align-items: center; gap: 10px; }
+
 .pack-filter {
   background: rgba(100,140,255,0.07);
   border: 0.5px solid rgba(100,140,255,0.25);
@@ -21,107 +24,242 @@
   color: #e0e8ff;
   cursor: pointer;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 17px;
   min-width: 120px;
   padding: 7px 12px;
 }
+
 .pack-filter:focus { outline: none; border-color: #4d8cff; }
 .pack-filter option { background: #0d1340; color: #e0e8ff; }
+
 .btn-preview {
   display: inline-flex; align-items: center; gap: 6px;
   background: transparent; border: 0.5px solid rgba(100,140,255,0.3);
   color: rgba(200,215,255,0.7); padding: 8px 16px; border-radius: 6px;
   font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.15s;
 }
+
 .btn-preview:hover { border-color: #4d8cff; color: #4d8cff; }
+
 .btn-publish {
   display: inline-flex; align-items: center; gap: 6px;
   background: #4d8cff; border: none; color: #fff;
   padding: 8px 16px; border-radius: 6px; font-size: 13px;
   font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.15s;
 }
+
 .btn-publish:hover { background: #3a7aee; }
+
 .prod-card {
   margin: 20px 28px; background: #0d1340;
   border: 0.5px solid rgba(100,140,255,0.2); border-radius: 10px; overflow: hidden;
 }
+
 .prod-edit-card { padding: 20px 24px; }
+
 .prod-table-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 20px; border-bottom: 0.5px solid rgba(100,140,255,0.12);
 }
+
 .prod-table-label {
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.8px; color: rgba(200,215,255,0.5);
 }
+
 .btn-add {
   background: #4d8cff; border: none; color: #fff; padding: 7px 14px;
-  border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer;
+  border-radius: 6px; font-size: 15px; font-weight: 500; cursor: pointer;
   font-family: inherit; transition: background 0.15s;
 }
+
 .btn-add:hover { background: #3a7aee; }
+
 .prod-table { width: 100%; border-collapse: collapse; }
+
 .prod-table th {
-  font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+  font-size: 13px; text-transform: uppercase; letter-spacing: 0.6px;
   color: rgba(200,215,255,0.35); padding: 10px 20px; text-align: left;
   border-bottom: 0.5px solid rgba(100,140,255,0.1);
 }
+
 .prod-table td {
   padding: 14px 20px; border-bottom: 1px solid rgba(100,140,255,0.07);
-  font-size: 13px; color: rgba(200,215,255,0.85);
+  font-size: 15px; color: rgba(200,215,255,0.85);
 }
+
 .prod-table tr:last-child td { border-bottom: none; }
 .prod-table tr.row-active td { background: rgba(77,140,255,0.06); }
+
 .prod-name-cell { display: flex; align-items: center; gap: 12px; }
+
 .prod-icon {
   width: 34px; height: 34px; border-radius: 8px;
   background: rgba(77,140,255,0.15); display: flex; align-items: center;
   justify-content: center; color: #4d8cff; font-size: 16px; flex-shrink: 0;
 }
-.prod-name { font-size: 13px; font-weight: 500; color: #e0e8ff; }
-.prod-subtitle { font-size: 11px; color: rgba(200,215,255,0.4); margin-top: 2px; }
+
+.prod-name { font-size: 15px; font-weight: 500; color: #e0e8ff; }
+.prod-subtitle { font-size: 12px; color: rgba(200,215,255,0.4); margin-top: 2px; }
 .prod-size { color: rgba(200,215,255,0.6); }
 .prod-pack { color: #e0e8ff; font-weight: 600; }
 .prod-price { color: #4d8cff; font-weight: 500; }
+
 .status-pill {
   display: inline-block; padding: 3px 10px; border-radius: 20px;
   font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
 }
+
 .pill-live { background: rgba(60,204,133,0.15); color: #3ccc85; border: 0.5px solid rgba(60,204,133,0.3); }
 .pill-oos { background: rgba(255,90,90,0.15); color: #ff5a5a; border: 0.5px solid rgba(255,90,90,0.3); }
+
 .action-btns { display: flex; gap: 8px; align-items: center; }
+
 .action-btn {
   width: 28px; height: 28px; border-radius: 6px;
   border: 0.5px solid rgba(100,140,255,0.2); background: rgba(100,140,255,0.07);
   color: rgba(200,215,255,0.6); display: flex; align-items: center;
   justify-content: center; cursor: pointer; font-size: 14px; transition: all 0.15s;
 }
+
 .action-btn:hover { background: rgba(77,140,255,0.15); color: #4d8cff; border-color: #4d8cff; }
 .action-btn-del:hover { background: rgba(255,90,90,0.12); color: #ff5a5a; border-color: rgba(255,90,90,0.4); }
+
 .edit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
 .edit-field { display: flex; flex-direction: column; gap: 6px; }
 .edit-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: rgba(200,215,255,0.4); }
+
 .edit-input {
   background: rgba(100,140,255,0.07); border: 0.5px solid rgba(100,140,255,0.2);
   border-radius: 6px; padding: 9px 12px; color: #e0e8ff; font-size: 13px;
   font-family: inherit; width: 100%; transition: border-color 0.15s;
 }
+
 .edit-input::placeholder { color: rgba(255,255,255,0.72); }
 .edit-input:focus { outline: none; border-color: #4d8cff; }
 .edit-select { appearance: none; cursor: pointer; }
 .edit-select option { background: #0d1340; color: #e0e8ff; }
 .edit-textarea { resize: vertical; min-height: 72px; }
+
 .edit-actions { display: flex; gap: 10px; margin-top: 18px; }
+
 .btn-save {
   display: inline-flex; align-items: center; gap: 6px;
   background: #4d8cff; border: none; color: #fff; padding: 8px 18px;
   border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer;
   font-family: inherit; transition: background 0.15s;
 }
+
 .btn-save:hover { background: #3a7aee; }
+
 .btn-cancel {
   background: transparent; border: 0.5px solid rgba(100,140,255,0.25);
   color: rgba(200,215,255,0.6); padding: 8px 18px; border-radius: 6px;
   font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.15s;
 }
+
 .btn-cancel:hover { border-color: rgba(200,215,255,0.4); color: #e0e8ff; }
+
+/* ════════════════════════════════════════
+   MOBILE CONTAINER & TABLE OVERRIDES
+   ════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .prod-header {
+    padding: 12px !important;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .prod-heading {
+    font-size: 16px;
+  }
+
+  .pack-filter {
+    font-size: 14px;
+    min-width: 100px;
+    padding: 6px 10px;
+  }
+
+  /* Structural override to ensure margins fit within available layout bounds */
+  .prod-card {
+    margin: 12px 8px !important; 
+    width: auto !important;       
+    max-width: none !important;
+    overflow: visible !important; 
+    border: 0.5px solid rgba(100,140,255,0.2) !important; 
+  }
+
+  .prod-edit-card {
+    padding: 12px !important;
+  }
+
+  .prod-table-header {
+    padding: 10px 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .prod-table-label {
+    font-size: 11px;
+  }
+
+  .btn-add {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+
+  /* Convert to safe, clean 3-column architecture */
+  .prod-table {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  .prod-table th, 
+  .prod-table td {
+    padding: 10px 6px !important;
+    font-size: 13px !important;
+  }
+
+  /* Safe exclusion rules to eliminate text wrap collision */
+  .prod-table th:nth-child(2), .prod-table td:nth-child(2), 
+  .prod-table th:nth-child(3), .prod-table td:nth-child(3), 
+  .prod-table th:nth-child(5), .prod-table td:nth-child(5) { 
+    display: none !important;
+  }
+
+  .prod-table th:first-child, 
+  .prod-table td:first-child { 
+    width: 50% !important; 
+  }
+  
+  .prod-table th:nth-child(4), 
+  .prod-table td:nth-child(4) { 
+    width: 25% !important; 
+    display: table-cell !important;
+  }
+  
+  .prod-table th:last-child, 
+  .prod-table td:last-child { 
+    width: 25% !important; 
+    text-align: right !important;
+    display: table-cell !important;
+  }
+
+  .action-btns {
+    display: inline-flex !important;
+    gap: 4px !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+  }
+
+  .action-btn {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 12px !important;
+    flex-shrink: 0 !important;
+  }
+}
