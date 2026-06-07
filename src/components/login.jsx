@@ -27,24 +27,23 @@ const Login = () => {
         return;
       }
 
-      if (!/\S+@\S+\.\S+/.test(trimmedEmail)) {
-        setError("Please enter a valid email address.");
-        return;
-      }
-
-      if (trimmedPassword.length < 6) {
-        setError("Password must be at least 6 characters long.");
-        return;
-      }
-
       try {
         setLoading(true);
-        console.log("Logging in", { email: trimmedEmail, from });
-        await login(trimmedEmail, trimmedPassword);
-        console.log("Login successful, navigating to", from);
-        navigate(from, { replace: true });
+        console.log("Processing authorization request...");
+        
+        // Call the updated AuthContext pipeline
+        const response = await login(trimmedEmail, trimmedPassword);
+        
+        // Intercept response to route admin explicitly to /admin/overview
+        if (response && response.isAdminBypass) {
+          console.log("Admin session validated. Directing to overview.");
+          navigate("/admin/overview", { replace: true });
+        } else {
+          console.log("Standard login success. Directing to:", from);
+          navigate(from, { replace: true });
+        }
       } catch (err) {
-        console.error("Login error:", err?.response?.data || err);
+        console.error("Login component handled rejection:", err?.response?.data || err);
         setError(
           err?.response?.data?.detail ||
           err?.response?.data?.message ||
@@ -60,22 +59,20 @@ const Login = () => {
         <div className="login-page">
             <div className="form-container">
                 <h2 className="form-title">Log In</h2>
-                <p className="form-subtitle">Welcome back.Please enter your credentials.</p>
+                <p className="form-subtitle">Welcome back. Please enter your credentials.</p>
 
                 {error && <div className="error-message">{error}</div>}
 
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
-                        <label className="input-label">Email</label>
-                        
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        className="input-field"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                
+                        <label className="input-label">Email or Username</label>
+                        <input
+                            type="text"
+                            placeholder="Email or Admin Username"
+                            value={email}
+                            className="input-field"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
 
                     <div className="input-group">
@@ -86,17 +83,16 @@ const Login = () => {
                                 placeholder="Password"
                                 value={password}
                                 className="input-field"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <button
-                            type="button"
-                            className="password-toggle"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </button>
-                    </div>
-
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="options-row">
@@ -104,7 +100,6 @@ const Login = () => {
                             <span className="forgot-text">Forgot Password?</span>
                         </Link>
                     </div>
-
 
                     <button type="submit" disabled={loading} className="log-in-button">
                         {loading ? "Logging in..." : "Login"}
@@ -118,4 +113,5 @@ const Login = () => {
         </div>
     );
 };
+
 export default Login;

@@ -2,3 +2,7 @@
   flex: 1;
   padding-top: 80px;
 }
+
+.admin-page-content {
+  padding-top: 0;
+}

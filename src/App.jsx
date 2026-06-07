@@ -10,6 +10,8 @@ import Navbar from './components/navbar';
 import CartPage from './components/cart';
 import ProductPage from './components/shop';
 import CheckoutPage from './components/checkoutPage';
+import AdminRoute from './components/admin/AdminRoute';
+import AdminPage from './components/admin/AdminPage.jsx';
 import './App.css';
 
 function RequireAuth({ children }) {
@@ -28,10 +30,13 @@ function RequireAuth({ children }) {
 }
 
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
     <>
       <Navbar />
-      <main className="page-content">
+      <main className={isAdminRoute ? 'page-content admin-page-content' : 'page-content'}>
         <Routes>
 
           <Route path="/" element={<Home />} />
@@ -50,10 +55,18 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route
+            path="/admin/*"
+            element={
+              <AdminRoute>
+                <AdminPage />
+              </AdminRoute>
+            }
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </>
   );
 }
