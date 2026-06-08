@@ -315,7 +315,7 @@ html, body {
 
 
 /* ==========================================================================
-   6. DYNAMIC SYSTEM DARK MODE ADJUSTMENTS
+   6. DYNAMIC SYSTEM DARK MODE ADJUSTMENTS (WITH COMPLETE CONTRAST PATCHES)
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
   html, body {
@@ -332,8 +332,14 @@ html, body {
   .cart-page .item-price,
   .cart-page .order-summary h2,
   .cart-page .summary-total,
-  .cart-page .promo-section label {
+  .cart-page .promo-section label,
+  .cart-page .summary-row,
+  .cart-page .summary-row span {
      color: #ffffff !important;
+  }
+
+  .cart-page .summary-row span:last-child {
+     color: #f8fafc !important;
   }
 
   .cart-page .item-size,
@@ -412,7 +418,7 @@ html, body {
   .cart-page {
      width: 92% !important;
      padding: 24px 0;
-     overflow-hidden: clip;
+     overflow: clip;
   }
   
   .cart-page .cart-layout {

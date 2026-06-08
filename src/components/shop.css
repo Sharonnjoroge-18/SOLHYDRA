@@ -765,7 +765,7 @@ html, body {
 
 
 /* ==========================================================================
-   7. RUNTIME DEVICE MEDIA GATES (STRICT SYSTEM OVERRIDES)
+   7. RUNTIME DEVICE MEDIA GATES (STRICT SYSTEM OVERRIDES WITH CONTRAST FIXES)
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
   html, body {
@@ -790,7 +790,8 @@ html, body {
   .quantity-section label,
   .quantity-controls span,
   .reviews-section h2, 
-  .reviews-header h2 {
+  .reviews-header h2,
+  .ingredient-card h3 {
     color: #ffffff !important;
   }
 
@@ -804,7 +805,8 @@ html, body {
   .benefit-layout-card p,
   .nutrition-layout-card p,
   .step-content-text p,
-  .review-text {
+  .review-text,
+  .ingredient-card p {
     color: #cbd5e1 !important;
   }
 

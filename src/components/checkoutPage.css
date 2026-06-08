@@ -269,3 +269,63 @@
   justify-content: center;
   margin: 0 auto 24px;
 }
+/* ── DARK MODE CONTRAST FIXES ── */
+@media (prefers-color-scheme: dark) {
+  .checkout-page {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+  }
+
+  .checkout-title {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .checkout-summary {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+  }
+
+  .checkout-summary h3,
+  .checkout-summary-item,
+  .checkout-total {
+    color: #e2e8f0 !important;
+  }
+
+  .checkout-total {
+    border-top-color: #334155 !important;
+    color: #60a5fa !important;
+  }
+
+  .form-label {
+    color: #94a3b8 !important;
+  }
+
+  .form-input {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  .form-input::placeholder {
+    color: #475569 !important;
+  }
+
+  .form-input:focus {
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15) !important;
+  }
+
+  .checkout-secondary {
+    background: #1e293b !important;
+    color: #60a5fa !important;
+    border-color: #334155 !important;
+  }
+
+  .checkout-secondary:hover {
+    background: #334155 !important;
+    border-color: #475569 !important;
+  }
+}
