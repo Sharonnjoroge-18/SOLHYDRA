@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-/* Base body canvas locked to solid white */
+/* Base body canvas forced to white to completely eradicate dark side margins */
 html, body {
   background-color: #ffffff !important;
   color: #1a2b4a !important;
@@ -132,7 +132,6 @@ html, body {
   font-weight: bold;
 }
 
-/* Clear, boosted typography readouts for subtitle descriptions */
 .description,
 .benefits-subtitle {
   color: #555555 !important;
@@ -206,7 +205,6 @@ html, body {
   color: #1a2b4a;
 }
 
-/* Call to Action Transaction Buttons */
 .action-buttons {
   display: flex;
   gap: 14px;
@@ -767,7 +765,96 @@ html, body {
 
 
 /* ==========================================================================
-   7. COMPACT RESPONSIVE SCREEN STACKS
+   7. RUNTIME DEVICE MEDIA GATES (STRICT SYSTEM OVERRIDES)
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #0f172a !important;
+  }
+
+  .product-page {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+  }
+
+  .product-title,
+  .benefits-main-title,
+  .benefit-layout-card h3,
+  .nutrition-main-title,
+  .nutrition-layout-card h3,
+  .step-content-text h3,
+  .reviewer-name,
+  .rating-number,
+  .rating-bar,
+  .size-section label, 
+  .quantity-section label,
+  .quantity-controls span,
+  .reviews-section h2, 
+  .reviews-header h2 {
+    color: #ffffff !important;
+  }
+
+  .price {
+    color: #7dd3fc !important; 
+  }
+
+  .old-price, .review-count, .feature,
+  .description,
+  .benefits-subtitle,
+  .benefit-layout-card p,
+  .nutrition-layout-card p,
+  .step-content-text p,
+  .review-text {
+    color: #cbd5e1 !important;
+  }
+
+  .size-btn, .quantity-controls button {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  .size-btn.active {
+    border-color: #38bdf8 !important;
+    color: #38bdf8 !important;
+    background: #0f172a !important;
+  }
+
+  .main-image, .thumbnail, .reviews-summary, .review-card {
+    background: #1e293b !important;
+  }
+
+  .features {
+    border-top-color: #334155 !important;
+  }
+
+  .tabs {
+    border-bottom-color: #334155 !important;
+  }
+
+  .tabs button:hover {
+    color: #ffffff !important;
+  }
+
+  .ingredient-card, .benefits-tab-wrapper, .nutrition-content-card, .how-to-use-card, .review-form-card {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+  }
+
+  .form-group input, .form-group textarea {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #ffffff !important;
+  }
+
+  .benefit-layout-card, .nutrition-layout-card, .icon-circle-badge {
+    background-color: #0f172a !important;
+  }
+}
+
+
+/* ==========================================================================
+   8. COMPACT RESPONSIVE SCREEN STACKS
    ========================================================================== */
 @media (max-width: 992px) {
   .product-container {
