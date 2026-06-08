@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. GLOBAL CANVAS & RESPONSIVE GRID CONFIGURATIONS (LIGHT BY DEFAULT)
+   1. GLOBAL CANVAS & RESPONSIVE GRID CONFIGURATIONS
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -10,6 +10,7 @@
 /* Base body canvas forced to white to completely eradicate dark side margins */
 html, body {
   background-color: #ffffff !important;
+  color: #1a2b4a !important;
   margin: 0;
   padding: 0;
 }
@@ -21,7 +22,7 @@ html, body {
   margin: 0 auto;
   padding: 40px 0;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  color: #1a2b4a;
+  color: #1a2b4a !important;
   background-color: #ffffff !important;
 }
 
@@ -99,7 +100,7 @@ html, body {
 .product-title {
   font-size: 36px;
   font-weight: 700;
-  color: #1a2b4a;
+  color: #1a2b4a !important;
   margin: 10px 0;
   line-height: 1.2;
 }
@@ -127,15 +128,15 @@ html, body {
   color: #1a2b4a;
   padding: 4px 10px;
   border-radius: 12px;
-  font-size: 17px;
+  font-size: 12px;
   font-weight: bold;
 }
 
 /* Clear, boosted typography readouts for subtitle descriptions */
 .description,
 .benefits-subtitle {
-  color: #555;
-  font-size: 18px !important;
+  color: #555555 !important;
+  font-size: 17px !important;
   line-height: 1.7;
   margin-bottom: 24px;
 }
@@ -151,8 +152,8 @@ html, body {
 .size-section label, .quantity-section label {
   display: block;
   font-weight: 600;
-  font-size: 20px;
   margin-bottom: 10px;
+  color: #1a2b4a;
 }
 
 .size-options {
@@ -199,6 +200,10 @@ html, body {
 
 .quantity-controls button:hover {
   background-color: #f1f5f9;
+}
+
+.quantity-controls span {
+  color: #1a2b4a;
 }
 
 /* Call to Action Transaction Buttons */
@@ -273,8 +278,8 @@ html, body {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 19px;
-  color: #616060;
+  font-size: 19px; /* Enhanced visibility title scaling */
+  color: #888;
   position: relative;
   border-bottom: 2px solid transparent;
   font-family: inherit;
@@ -303,8 +308,8 @@ html, body {
 }
 
 .ingredient-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 16px;
   padding: 35px 24px;
   display: flex;
@@ -331,7 +336,7 @@ html, body {
 }
 
 .ingredient-card h3 {
-  color: #091d3e;
+  color: #1a2b4a !important;
   font-size: 17px;
   font-weight: 700;
   margin-top: 0;
@@ -339,22 +344,22 @@ html, body {
 }
 
 .ingredient-card p {
-  color: #64748b;
+  color: #555555 !important;
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
 }
 
 .benefits-tab-wrapper {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   border-radius: 24px;
   padding: 45px 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); 
-  border: 1px solid #f1f5f9;
+  border: 1px solid #e2e8f0 !important;
 }
 
 .benefits-main-title {
-  color: black; 
+  color: #1a2b4a !important; 
   font-size: 34px;
   font-weight: 700;
   margin-top: 0;
@@ -368,13 +373,13 @@ html, body {
 }
 
 .benefit-layout-card {
-  background-color: #eef6ff; 
+  background-color: #eef6ff !important; 
   border-radius: 16px;
   padding: 32px;
 }
 
 .benefit-layout-card h3 {
-  color: black; 
+  color: #1a2b4a !important; 
   font-size: 19px;
   font-weight: 700;
   margin-top: 0;
@@ -382,7 +387,7 @@ html, body {
 }
 
 .benefit-layout-card p {
-  color: #475569; 
+  color: #555555 !important; 
   font-size: 14.5px;
   line-height: 1.6;
   margin: 0;
@@ -421,15 +426,15 @@ html, body {
 }
 
 .nutrition-content-card {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   border-radius: 24px;
   padding: 45px 50px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.02);
-  border: 1px solid #f1f5f9;
+  border: 1px solid #e2e8f0 !important;
 }
 
 .nutrition-main-title {
-  color: #091d3e; 
+  color: #1a2b4a !important; 
   font-size: 32px;
   font-weight: 700;
   margin-top: 0;
@@ -443,7 +448,7 @@ html, body {
 }
 
 .nutrition-layout-card {
-  background-color: #eef6ff; 
+  background-color: #eef6ff !important; 
   border-radius: 16px;
   padding: 32px;
   display: flex;
@@ -451,7 +456,7 @@ html, body {
 }
 
 .nutrition-layout-card h3 {
-  color: #091d3e;
+  color: #1a2b4a !important;
   font-size: 18px;
   font-weight: 700;
   margin-top: 0;
@@ -459,7 +464,7 @@ html, body {
 }
 
 .nutrition-layout-card p {
-  color: #475569; 
+  color: #555555 !important; 
   font-size: 14.5px;
   line-height: 1.65;
   margin: 0;
@@ -476,8 +481,8 @@ html, body {
 }
 
 .how-to-use-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0; 
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important; 
   border-radius: 16px; 
   padding: 24px 32px;
   display: flex;
@@ -507,7 +512,7 @@ html, body {
 }
 
 .step-content-text h3 {
-  color: #0f172a; 
+  color: #1a2b4a !important; 
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -515,7 +520,7 @@ html, body {
 }
 
 .step-content-text p {
-  color: #64748b; 
+  color: #555555 !important; 
   font-size: 15px;
   line-height: 1.6;
   margin: 0;
@@ -557,6 +562,11 @@ html, body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+  color: #1a2b4a;
+}
+
+.reviews-header h2, .reviews-section h2 {
+  color: #1a2b4a !important;
 }
 
 .add-review-btn {
@@ -575,8 +585,8 @@ html, body {
 }
 
 .review-form-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: #fff !important;
+  border: 1px solid #e5e7eb !important;
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -712,7 +722,7 @@ html, body {
 .reviewer {
   display: flex;
   align-items: center;
-  width: 100%; /* Spans full width of card to guarantee far-right badge float */
+  width: 100%; 
 }
 
 .avatar {
@@ -735,10 +745,9 @@ html, body {
 
 .reviewer-name {
   font-weight: 600;
-  color: #1a2b4a;
+  color: #1a2b4a !important;
 }
 
-/* Securely locked onto the far-right edge of the user reviews feed card */
 .verified {
   margin-left: auto !important;
   background: #10b981;
@@ -751,7 +760,7 @@ html, body {
 }
 
 .review-text {
-  color: #555;
+  color: #555555 !important;
   line-height: 1.6;
   margin-top: 8px;
 }
@@ -770,7 +779,20 @@ html, body {
     color: #f1f5f9 !important;
   }
 
-  .product-title {
+  .product-title,
+  .benefits-main-title,
+  .benefit-layout-card h3,
+  .nutrition-main-title,
+  .nutrition-layout-card h3,
+  .step-content-text h3,
+  .reviewer-name,
+  .rating-number,
+  .rating-bar,
+  .size-section label, 
+  .quantity-section label,
+  .quantity-controls span,
+  .reviews-section h2, 
+  .reviews-header h2 {
     color: #ffffff !important;
   }
 
@@ -778,16 +800,14 @@ html, body {
     color: #7dd3fc !important; 
   }
 
-  .old-price, .review-count, .feature {
-    color: #94a3b8 !important;
-  }
-
-  .description {
+  .old-price, .review-count, .feature,
+  .description,
+  .benefits-subtitle,
+  .benefit-layout-card p,
+  .nutrition-layout-card p,
+  .step-content-text p,
+  .review-text {
     color: #cbd5e1 !important;
-  }
-
-  .size-section label, .quantity-section label, .pack-section label {
-    color: #ffffff !important;
   }
 
   .size-btn, .quantity-controls button {
@@ -800,10 +820,6 @@ html, body {
     border-color: #38bdf8 !important;
     color: #38bdf8 !important;
     background: #0f172a !important;
-  }
-
-  .quantity-controls span {
-    color: #ffffff !important;
   }
 
   .main-image, .thumbnail, .reviews-summary, .review-card {
@@ -833,36 +849,8 @@ html, body {
     color: #ffffff !important;
   }
 
-  .ingredient-card h3, .benefits-main-title, .benefit-layout-card h3, .nutrition-main-title, .nutrition-layout-card h3, .step-content-text h3 {
-    color: #ffffff !important;
-  }
-
-  .ingredient-card p, .benefits-subtitle, .benefit-layout-card p, .nutrition-layout-card p, .step-content-text p {
-    color: #94a3b8 !important;
-  }
-
   .benefit-layout-card, .nutrition-layout-card, .icon-circle-badge {
     background-color: #0f172a !important;
-  }
-
-  .rating-number {
-    color: #ffffff !important; 
-  }
-
-  .rating-bar {
-    color: #ffffff !important; 
-  }
-
-  .review-text {
-    color: #cbd5e1 !important; 
-  }
-
-  .reviewer-name {
-    color: #ffffff !important;
-  }
-  
-  .reviews-section h2, .reviews-header h2 {
-    color: #ffffff !important;
   }
 }
 

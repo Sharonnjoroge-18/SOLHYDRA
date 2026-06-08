@@ -1,17 +1,28 @@
 /* ==========================================================================
    1. GLOBAL RESETS & CANVAS LAYOUT
    ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Forces solid white base layout locally and on Vercel to eliminate raw bleed */
+html, body {
+  background-color: #ffffff !important;
+  color: #1a1a2e !important;
+  margin: 0;
+  padding: 0;
+}
+
 .cart-page {
   width: 94%;
-  max-width: 1500px; /* Aligned with widescreen shop settings */
+  max-width: 1500px; /* Aligned with widescreen settings */
   margin: 0 auto;
   padding: 40px 0;
   font-family: 'Inter', -apple-system, sans-serif;
-  color: #1a1a2e;
-}
-
-.cart-page * {
-  box-sizing: border-box;
+  color: #1a1a2e !important;
+  background-color: #ffffff !important;
 }
 
 .cart-page a {
@@ -29,9 +40,10 @@
   font-size: 40px; /* Enhanced visibility scale */
   font-weight: 700;
   margin-bottom: 32px;
+  color: #1a1a2e !important;
 }
 
-/* Reduced left side space by increasing right sidebar width to 480px */
+/* Perfectly adjusted column weights: left side trimmed, right summary side widened */
 .cart-page .cart-layout {
   display: grid;
   grid-template-columns: 1fr 480px; 
@@ -78,11 +90,12 @@
   font-weight: 600;
   margin: 0 0 6px;
   line-height: 1.4;
+  color: #1a1a2e !important;
 }
 
 .cart-page .item-size {
   font-size: 15px; 
-  color: #6b7280;
+  color: #6b7280 !important;
   margin: 0 0 8px;
 }
 
@@ -90,6 +103,7 @@
   font-weight: 700;
   font-size: 20px; 
   margin: 0;
+  color: #1a1a2e !important;
 }
 
 
@@ -110,6 +124,7 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 6px 12px; /* Comfortable touch target sizing */
+  background: #ffffff;
 }
 
 .cart-page .qty-control button {
@@ -125,6 +140,7 @@
   text-align: center;
   font-size: 16px; 
   font-weight: 500;
+  color: #1a1a2e !important;
 }
 
 .cart-page .remove-btn {
@@ -140,10 +156,10 @@
    4. ORDER SUMMARY & PROMO INPUT SYSTEM
    ========================================================================== */
 .cart-page .order-summary {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
   border-radius: 12px;
-  padding: 32px; /* Balanced spacing around content fields */
+  padding: 32px; /* Balanced spacing inside the spacious sidebar container */
   height: fit-content;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
@@ -152,6 +168,7 @@
   font-size: 22px; 
   font-weight: 700;
   margin: 0 0 24px;
+  color: #1a1a2e !important;
 }
 
 .cart-page .summary-row {
@@ -160,6 +177,7 @@
   padding: 14px 0;
   font-size: 16px; 
   border-bottom: 1px solid #f3f4f6;
+  color: #1a1a2e !important;
 }
 
 .cart-page .free {
@@ -181,6 +199,7 @@
   font-size: 15px; 
   font-weight: 600;
   margin-bottom: 10px;
+  color: #1a1a2e !important;
 }
 
 .cart-page .promo-input {
@@ -195,6 +214,8 @@
   border-radius: 6px;
   font-size: 16px; 
   outline: none;
+  background-color: #ffffff;
+  color: #1a1a2e;
   transition: border-color 0.2s;
 }
 
@@ -229,6 +250,7 @@
   margin-top: 12px;
   font-weight: 700;
   font-size: 18px; 
+  color: #1a1a2e !important;
 }
 
 .cart-page .total-price {
@@ -298,7 +320,12 @@
    6. DYNAMIC SYSTEM DARK MODE ADJUSTMENTS
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #0f172a !important;
+  }
+
   .cart-page {
+     background-color: #0f172a !important;
      color: #f1f5f9 !important;
   }
 
@@ -377,7 +404,7 @@
    7. MOBILE RESPONSIVE ADAPTATIONS
    ========================================================================== */
 @media (max-width: 1150px) {
-  /* Safely drop the sidebar width on smaller laptops so it doesn't crowd out the items */
+  /* Scale down the sidebar slightly on laptop views before full viewport break */
   .cart-page .cart-layout {
     grid-template-columns: 1fr 400px;
     gap: 32px;
