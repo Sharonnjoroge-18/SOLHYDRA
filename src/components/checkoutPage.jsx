@@ -16,9 +16,9 @@ const CheckoutPage = () => {
   const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]').map(item => ({
     ...item,
     quantity: item.qty ?? item.quantity ?? 1,
-  }))
-  const cartDiscount = JSON.parse(localStorage.getItem('cartDiscount') || '0')
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  }));
+  const cartDiscount = JSON.parse(localStorage.getItem('cartDiscount') || '0');
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const total = subtotal - cartDiscount;
 
   const handleChange = (event) => {
@@ -45,57 +45,38 @@ const CheckoutPage = () => {
           product: item.id ?? item.product_id,
           quantity: item.quantity ?? item.qty ?? 1,
         };
-        console.log('Creating order payload:', payload, 'cart item:', item);
 
         const order = await ordersAPI.create(payload);
-
-        console.log('Order created:', order);
         const orderId = order?.id ?? order?._id ?? order?.order_id ?? order?.orderId;
-        if (!orderId) {
-          console.error('Create order response:', order);
-          throw new Error('Order creation failed: missing order ID');
-        }
 
+        if (!orderId) throw new Error('Order creation failed: missing order ID');
         createdOrderIds.push(orderId);
       }
 
       const orderId = createdOrderIds[0];
-      console.log('Created orderId:', orderId);
 
-      try {
-        const payment = await paymentsAPI.initiate(orderId);
-        console.log('Payment initiation response:', payment);
-        if (payment?.authorization_url) {
-          const authUrl = payment.authorization_url;
-          const finalUrl = /^https?:\/\//i.test(authUrl)
-            ? authUrl
-            : new URL(
-                authUrl,
-                import.meta.env.VITE_API_BASE_URL || 'https://hydra-backend-production-4f57.up.railway.app'
-              ).href;
+      const callbackUrl = `${window.location.origin}/payment/callback`;
+      const payment = await paymentsAPI.initiate(orderId, callbackUrl);
 
-          console.log('Redirecting to payment URL:', finalUrl);
-          window.location.href = finalUrl;
-          return;
-        }
-        if (payment?.message) {
-          throw new Error(payment.message);
-        }
-      } catch (paymentError) {
-        console.error('Payment initiation failed:', paymentError?.response?.data || paymentError);
-        setError(
-          paymentError?.response?.data?.detail ||
-          paymentError?.response?.data?.message ||
-          paymentError?.message ||
-          'Payment redirection failed. Your order was created, but payment could not be completed automatically.'
-        );
-        localStorage.removeItem('cartItems');
+      if (payment?.authorization_url) {
+        const authUrl = payment.authorization_url;
+        const finalUrl = /^https?:\/\//i.test(authUrl)
+          ? authUrl
+          : new URL(
+              authUrl,
+              import.meta.env.VITE_API_BASE_URL || 'https://hydra-backend-production-4f57.up.railway.app'
+            ).href;
+        window.location.href = finalUrl;
         return;
       }
 
+      if (payment?.message) throw new Error(payment.message);
+
+      // Fallback if no redirect URL
       localStorage.removeItem('cartItems');
-      alert('Order placed successfully. We could not complete payment redirection automatically.');
-      navigate('/');
+      localStorage.removeItem('cartDiscount');
+      navigate('/shop');
+
     } catch (err) {
       console.error('Checkout error:', err?.response?.data || err);
       setError(
@@ -104,7 +85,6 @@ const CheckoutPage = () => {
         err.message ||
         'Failed to process checkout. Please try again.'
       );
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -116,9 +96,7 @@ const CheckoutPage = () => {
         ← Back
       </button>
 
-      <h2 className="checkout-title">
-        Checkout
-      </h2>
+      <h2 className="checkout-title">Checkout</h2>
 
       <div className="checkout-summary">
         <h3>Order Summary</h3>
@@ -134,11 +112,7 @@ const CheckoutPage = () => {
         </div>
       </div>
 
-      {error && (
-        <div className="checkout-error">
-          {error}
-        </div>
-      )}
+      {error && <div className="checkout-error">{error}</div>}
 
       <form className="checkout-form" onSubmit={handleSubmit}>
         <div className="form-group">

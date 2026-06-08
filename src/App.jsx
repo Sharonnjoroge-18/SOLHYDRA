@@ -10,6 +10,7 @@ import Navbar from './components/navbar';
 import CartPage from './components/cart';
 import ProductPage from './components/shop';
 import CheckoutPage from './components/checkoutPage';
+import PaymentCallback from './components/PaymentCallback';
 import AdminRoute from './components/admin/AdminRoute';
 import AdminPage from './components/admin/AdminPage.jsx';
 import './App.css';
@@ -55,6 +56,7 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route path="/payment/callback" element={<PaymentCallback />} />
           <Route
             path="/admin/*"
             element={

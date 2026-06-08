@@ -79,8 +79,10 @@ export const ordersAPI = {
 
 /* -------------- PAYMENTS -------------- */
 export const paymentsAPI = {
-  initiate: (orderId) =>
-    api.post(`/payments/initiate/${orderId}`).then((r) => r.data),
+  initiate: (orderId, callbackUrl) => {
+  const cb = callbackUrl || `${window.location.origin}/payment/callback`;
+  return api.post(`/payments/initiate/${orderId}?callback_url=${encodeURIComponent(cb)}`).then((r) => r.data);
+},
 
   verify: (reference) => api.get(`/payments/verify/${reference}`).then((r) => r.data),
 };
